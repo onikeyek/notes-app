@@ -1,3 +1,3 @@
 const CONFIG = {
-  API_URL: 'https://your-backend-url.onrender.com'
+  API_URL: 'https://notes-app-cy7f.onrender.com'
 };
