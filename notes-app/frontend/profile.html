@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoteNest ⭐ — Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-name">NoteNest ⭐</span>
+      <span class="brand-sub">PREMIUM PRO</span>
+    </div>
+    <button class="new-note-btn" onclick="window.location.href='index.html'">+ Create New</button>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="index.html" class="nav-item">
+        <span class="nav-icon">📝</span> Workspace
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">📈</span> Analytics
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">🗄</span> Vault
+      </a>
+      <a href="profile.html" class="nav-item active">
+        <span class="nav-icon">👤</span> Profile
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar">N</div>
+        <div>
+          <div class="user-name">Naimot</div>
+          <div class="user-role">Pro Account</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="topbar">
+      <nav class="profile-nav-tabs">
+        <a href="index.html" class="tab-link">Dashboard</a>
+        <a href="index.html" class="tab-link">Workspace</a>
+        <a href="profile.html" class="tab-link active">Profile</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="toggle-theme">🌙</button>
+      </div>
+    </header>
+
+    <div class="profile-content">
+
+      <!-- Profile Header Card -->
+      <div class="profile-header-card">
+        <div class="profile-banner"></div>
+        <div class="profile-info-row">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar">N</div>
+            <button class="avatar-edit-btn" title="Change photo">✏</button>
+          </div>
+          <div class="profile-meta">
+            <div class="profile-name-row">
+              <h2>Naimot</h2>
+              <span class="pro-badge">⭐ PRO ACCOUNT</span>
+            </div>
+            <p class="profile-joined">📅 Joined January 2024</p>
+          </div>
+          <div class="profile-actions">
+            <button class="share-btn">Share Profile</button>
+            <button class="edit-profile-btn" id="edit-profile-btn">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="profile-stats">
+        <div class="stat-card">
+          <span class="stat-card-label">LIFETIME</span>
+          <div class="stat-card-icon">📋</div>
+          <div class="stat-card-num" id="profile-total-notes">0</div>
+          <div class="stat-card-desc">Total Notes</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-label">ACTIVE</span>
+          <div class="stat-card-icon">📁</div>
+          <div class="stat-card-num" id="profile-categories">4</div>
+          <div class="stat-card-desc">Categories</div>
+        </div>
+        <div class="stat-card storage-card">
+          <span class="stat-card-label">STORAGE</span>
+          <div class="stat-card-icon">☁️</div>
+          <div class="storage-text">Free Plan</div>
+          <div class="storage-bar-wrap">
+            <div class="storage-bar" style="width: 20%"></div>
+          </div>
+          <div class="storage-sub">Supabase free tier</div>
+        </div>
+      </div>
+
+      <div class="profile-bottom">
+        <!-- Left: Account Settings + Security -->
+        <div class="profile-left">
+
+          <!-- Account Settings -->
+          <div class="panel-card">
+            <h3 class="panel-title">👤 Account Settings</h3>
+            <div class="settings-grid">
+              <div class="settings-field">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" id="profile-email" value="naimot@notenest.com" />
+              </div>
+              <div class="settings-field">
+                <label>WORKSPACE NAME</label>
+                <input type="text" id="profile-workspace" value="Naimot's Creative Studio" />
+              </div>
+              <div class="settings-field">
+                <label>DISPLAY NAME</label>
+                <input type="text" id="profile-name" value="Naimot" />
+              </div>
+              <div class="settings-field">
+                <label>TIMEZONE</label>
+                <select id="profile-timezone">
+                  <option>(GMT+01:00) West Africa Time</option>
+                  <option>(GMT+00:00) UTC</option>
+                  <option>(GMT-08:00) Pacific Time</option>
+                  <option>(GMT-05:00) Eastern Time</option>
+                </select>
+              </div>
+            </div>
+            <button class="save-settings-btn" id="save-settings-btn">Save Changes</button>
+          </div>
+
+          <!-- Security -->
+          <div class="panel-card">
+            <h3 class="panel-title">🔒 Security</h3>
+            <div class="security-item">
+              <div class="security-icon">🔄</div>
+              <div>
+                <div class="security-title">Change Password</div>
+                <div class="security-sub">Last updated 4 months ago</div>
+              </div>
+              <button class="security-action-btn">Update</button>
+            </div>
+            <div class="security-item">
+              <div class="security-icon">🛡</div>
+              <div>
+                <div class="security-title">Two-Factor Authentication</div>
+                <div class="security-sub enabled">Enabled: Authenticator App</div>
+              </div>
+              <button class="security-action-btn">Manage</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Preferences + Upgrade -->
+        <div class="profile-right">
+
+          <!-- Preferences -->
+          <div class="panel-card">
+            <h3 class="panel-title">⚙ Preferences</h3>
+            <div class="pref-item">
+              <div>
+                <div class="pref-title">Dark Mode</div>
+                <div class="pref-sub">Switch to the dark side</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="pref-dark" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="pref-item">
+              <div>
+                <div class="pref-title">Email Notifications</div>
+                <div class="pref-sub">Weekly workspace digests</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="pref-email" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="pref-item">
+              <div>
+                <div class="pref-title">Desktop Alerts</div>
+                <div class="pref-sub">Native OS notifications</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="pref-desktop" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="pref-item">
+              <div>
+                <div class="pref-title">Show Productivity Score</div>
+                <div class="pref-sub">Visible to teammates</div>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="pref-score" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Upgrade -->
+          <div class="panel-card upgrade-card">
+            <div class="upgrade-status-label">UPGRADE STATUS</div>
+            <h3>NoteNest Enterprise</h3>
+            <p>Unlock advanced analytics, unlimited vault storage, and custom workspace branding.</p>
+            <button class="upgrade-btn">Compare Plans</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>

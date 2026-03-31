@@ -1,0 +1,198 @@
+.profile-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Top nav tabs */
+.profile-nav-tabs {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+.tab-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.tab-link.active, .tab-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Profile header card */
+.profile-header-card {
+  background: var(--surface);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.profile-banner {
+  height: 120px;
+  background: linear-gradient(135deg, #3b2f8f, #5b4fcf, #7c6fef);
+}
+.profile-info-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 0 28px 24px;
+  margin-top: -40px;
+}
+.profile-avatar-wrap { position: relative; }
+.profile-avatar {
+  width: 80px; height: 80px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: 700;
+  border: 4px solid var(--surface);
+}
+.avatar-edit-btn {
+  position: absolute; bottom: 0; right: 0;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 50%;
+  width: 24px; height: 24px;
+  font-size: 0.7rem; cursor: pointer;
+}
+.profile-meta { flex: 1; padding-top: 44px; }
+.profile-name-row { display: flex; align-items: center; gap: 10px; }
+.profile-name-row h2 { font-size: 1.5rem; font-weight: 700; }
+.pro-badge {
+  background: var(--accent-light); color: var(--accent);
+  font-size: 0.7rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+.profile-joined { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+.profile-actions { display: flex; gap: 10px; padding-top: 44px; }
+.share-btn {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 18px;
+  font-size: 0.85rem; cursor: pointer; color: var(--text);
+}
+.edit-profile-btn {
+  background: var(--accent); color: #fff; border: none;
+  border-radius: 10px; padding: 8px 18px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+}
+
+/* Stats */
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.stat-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+}
+.stat-card-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; color: var(--accent);
+  position: absolute; top: 16px; right: 16px;
+}
+.stat-card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+.stat-card-num { font-size: 2rem; font-weight: 700; color: var(--text); }
+.stat-card-desc { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.storage-text { font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+.storage-bar-wrap {
+  background: var(--border); border-radius: 10px;
+  height: 6px; margin-bottom: 6px;
+}
+.storage-bar {
+  background: var(--accent); height: 6px;
+  border-radius: 10px; transition: width 0.3s;
+}
+.storage-sub { font-size: 0.75rem; color: var(--muted); }
+
+/* Bottom layout */
+.profile-bottom { display: flex; gap: 20px; align-items: flex-start; }
+.profile-left { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.profile-right { width: 260px; min-width: 260px; display: flex; flex-direction: column; gap: 16px; }
+
+/* Settings grid */
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.settings-field label {
+  display: block; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px;
+}
+.settings-field input,
+.settings-field select {
+  width: 100%; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg); color: var(--text);
+  font-size: 0.875rem; font-family: inherit; outline: none;
+  transition: border-color 0.15s;
+}
+.settings-field input:focus,
+.settings-field select:focus { border-color: var(--accent); }
+
+.save-settings-btn {
+  background: var(--accent); color: #fff; border: none;
+  border-radius: 10px; padding: 10px 24px;
+  font-size: 0.875rem; font-weight: 600; cursor: pointer;
+}
+
+/* Security */
+.security-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px; background: var(--bg);
+  border-radius: 12px; margin-bottom: 10px;
+}
+.security-icon { font-size: 1.2rem; }
+.security-title { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.security-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+.security-sub.enabled { color: #2f9e44; }
+.security-action-btn {
+  margin-left: auto; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 6px 14px; font-size: 0.8rem; cursor: pointer; color: var(--text);
+}
+
+/* Preferences toggles */
+.pref-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.pref-item:last-child { border-bottom: none; }
+.pref-title { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.pref-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0;
+  background: var(--border); border-radius: 24px; cursor: pointer;
+  transition: background 0.2s;
+}
+.toggle-slider::before {
+  content: ''; position: absolute;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; left: 3px; top: 3px;
+  transition: transform 0.2s;
+}
+.toggle input:checked + .toggle-slider { background: var(--accent); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* Upgrade card override */
+.upgrade-card .upgrade-status-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; color: #a5b4fc; margin-bottom: 8px;
+}
+.upgrade-card h3 { font-size: 1rem; }

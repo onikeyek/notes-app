@@ -13,7 +13,7 @@ app.use(express.json());
 app.get('/notes', async (req, res) => {
   try {
     const result = await db.query(
-      'SELECT id, title, content, created_at FROM notes ORDER BY id DESC'
+      'SELECT id, title, content, image_url, created_at FROM notes ORDER BY id DESC'
     );
     res.json(result.rows);
   } catch (error) {
@@ -23,7 +23,7 @@ app.get('/notes', async (req, res) => {
 });
 
 app.post('/notes', async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, image_url } = req.body;
 
   if (!title) {
     return res.status(400).json({ error: 'Title is required' });
@@ -31,12 +31,27 @@ app.post('/notes', async (req, res) => {
 
   try {
     const result = await db.query(
-      'INSERT INTO notes (title, content) VALUES ($1, $2) RETURNING *',
-      [title, content]
+      'INSERT INTO notes (title, content, image_url) VALUES ($1, $2, $3) RETURNING *',
+      [title, content, image_url || null]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
     console.error('POST /notes error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.put('/notes/:id', async (req, res) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+  if (!title) return res.status(400).json({ error: 'Title is required' });
+  try {
+    const result = await db.query(
+      'UPDATE notes SET title = $1, content = $2 WHERE id = $3 RETURNING *',
+      [title, content, id]
+    );
+    res.json(result.rows[0]);
+  } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });

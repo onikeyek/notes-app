@@ -3,29 +3,214 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notes App</title>
+  <title>NoteNest ⭐</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app">
-    <header>
-      <h1>Saved Notes</h1>
-      <p class="subtitle">Your digital library of thoughts, preserved in one place.</p>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-name">NoteNest ⭐</span>
+      <span class="brand-sub">WORKSPACE</span>
+    </div>
+    <button class="new-note-btn" id="open-compose">+ New Note</button>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-filter="all">
+        <span class="nav-icon">📄</span> All Notes
+      </a>
+      <a href="#" class="nav-item" data-filter="work">
+        <span class="nav-icon">💼</span> Work
+      </a>
+      <a href="#" class="nav-item" data-filter="school">
+        <span class="nav-icon">🎓</span> School
+      </a>
+      <a href="#" class="nav-item" data-filter="ideas">
+        <span class="nav-icon">💡</span> Ideas
+      </a>
+      <a href="#" class="nav-item" data-filter="personal">
+        <span class="nav-icon">🔔</span> Personal
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info" style="cursor:pointer" onclick="window.location.href='profile.html'">
+        <div class="avatar">N</div>
+        <div>
+          <div class="user-name">Naimot</div>
+          <div class="user-role">Pro Account</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="topbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search your notes..." />
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="toggle-theme">🌙</button>
+      </div>
     </header>
 
-    <section class="compose">
-      <input type="text" id="note-title" placeholder="Title of your note..." />
-      <textarea id="note-content" placeholder="Start typing here..."></textarea>
-      <button id="add-btn">Add Note +</button>
-    </section>
+    <div class="content">
+      <div class="content-left">
+        <div class="greeting">
+          <h1>Good morning, Naimot. 👋</h1>
+          <p>You have <span id="note-count" class="highlight">0 notes</span></p>
+        </div>
 
-    <section class="notes-section">
-      <div class="notes-header">
-        <span>Recent Entries</span>
-        <span id="note-count">0 Notes</span>
+        <div class="sort-bar">
+          <button class="sort-btn active" data-sort="newest">Newest</button>
+          <button class="sort-btn" data-sort="az">A–Z</button>
+        </div>
+
+        <div id="notes-grid" class="notes-grid"></div>
       </div>
-      <div id="notes-list"></div>
-    </section>
+
+      <!-- Right Panel -->
+      <aside class="right-panel">
+
+        <!-- Quick Stats -->
+        <div class="panel-card">
+          <h3 class="panel-title">Quick Stats</h3>
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-num" id="stat-total">0</span>
+              <span class="stat-label">TOTAL NOTES</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" id="stat-today">0</span>
+              <span class="stat-label">ADDED TODAY</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular Tags -->
+        <div class="panel-card">
+          <h3 class="panel-title">Popular Tags</h3>
+          <div class="popular-tags">
+            <span class="pop-tag work">#work</span>
+            <span class="pop-tag school">#school</span>
+            <span class="pop-tag ideas">#ideas</span>
+            <span class="pop-tag personal">#personal</span>
+          </div>
+        </div>
+
+        <!-- Upgrade -->
+        <div class="panel-card upgrade-card">
+          <h3>Unlock Pro ⭐</h3>
+          <p>Get unlimited notes, mood insights, and cross-device sync with NoteNest Pro.</p>
+          <button class="upgrade-btn">Upgrade Now</button>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- Compose Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="drafting-label">✏ DRAFTING</span>
+        <button class="close-btn" id="close-modal">✕</button>
+      </div>
+      <input type="text" id="note-title" placeholder="Title your brilliance..." class="modal-title-input" />
+      <textarea id="note-content" placeholder="Start writing here..."></textarea>
+      <div class="mood-row">
+        <span class="tag-label">HOW ARE YOU FEELING?</span>
+        <div class="mood-picker">
+          <button class="mood-btn active" data-mood="😊">😊</button>
+          <button class="mood-btn" data-mood="😔">😔</button>
+          <button class="mood-btn" data-mood="😤">😤</button>
+          <button class="mood-btn" data-mood="😴">😴</button>
+          <button class="mood-btn" data-mood="🤩">🤩</button>
+          <button class="mood-btn" data-mood="😰">😰</button>
+          <button class="mood-btn" data-mood="🥳">🥳</button>
+          <button class="mood-btn" data-mood="😌">😌</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="tag-row">
+          <span class="tag-label">CATEGORIZE</span>
+          <div class="tags">
+            <button class="tag-chip active" data-tag="work">Work</button>
+            <button class="tag-chip" data-tag="school">School</button>
+            <button class="tag-chip" data-tag="ideas">Ideas</button>
+            <button class="tag-chip" data-tag="personal">Personal</button>
+          </div>
+        </div>
+        <button class="save-btn" id="save-note">💾 Save Note</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Note Detail View -->
+  <div class="detail-view" id="detail-view" style="display:none">
+    <div class="detail-topbar">
+      <button class="back-btn" id="back-btn">← Back</button>
+      <span class="detail-label">VIEWING NOTE</span>
+      <button class="detail-edit-btn" id="detail-edit-btn">✏ Edit</button>
+    </div>
+    <div class="detail-body">
+      <div class="detail-main">
+        <div id="detail-image-wrap" style="display:none">
+          <img id="detail-image" src="" alt="" class="detail-img" />
+        </div>
+        <div id="detail-tag-mood" class="detail-tag-mood"></div>
+        <h1 id="detail-title" class="detail-title"></h1>
+        <p id="detail-content" class="detail-content"></p>
+      </div>
+      <aside class="detail-sidebar">
+        <div class="panel-card">
+          <h3 class="panel-title">Details</h3>
+          <div class="detail-meta-row"><span>Created</span><span id="dm-created"></span></div>
+          <div class="detail-meta-row"><span>Word Count</span><span id="dm-words"></span></div>
+          <div class="detail-meta-row"><span>Reading Time</span><span id="dm-read"></span></div>
+        </div>
+        <button class="delete-detail-btn" id="delete-detail-btn">🗑 Delete Note</button>
+      </aside>
+    </div>
+  </div>
+
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="edit-modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="drafting-label">✏ EDITING NOTE</span>
+        <button class="close-btn" id="close-edit-modal">✕</button>
+      </div>
+      <input type="text" id="edit-note-title" placeholder="Title..." class="modal-title-input" />
+      <textarea id="edit-note-content" placeholder="Content..."></textarea>
+      <div class="modal-footer">
+        <div class="tag-row">
+          <span class="tag-label">CATEGORIZE</span>
+          <div class="tags" id="edit-tag-chips">
+            <button class="tag-chip active" data-tag="work">Work</button>
+            <button class="tag-chip" data-tag="school">School</button>
+            <button class="tag-chip" data-tag="ideas">Ideas</button>
+            <button class="tag-chip" data-tag="personal">Personal</button>
+          </div>
+        </div>
+        <div class="tag-row">
+          <span class="tag-label">HOW ARE YOU FEELING?</span>
+          <div class="mood-picker" id="edit-mood-picker">
+            <button class="mood-btn active" data-mood="😊">😊</button>
+            <button class="mood-btn" data-mood="😔">😔</button>
+            <button class="mood-btn" data-mood="😤">😤</button>
+            <button class="mood-btn" data-mood="😴">😴</button>
+            <button class="mood-btn" data-mood="🤩">🤩</button>
+            <button class="mood-btn" data-mood="😰">😰</button>
+            <button class="mood-btn" data-mood="🥳">🥳</button>
+            <button class="mood-btn" data-mood="😌">😌</button>
+          </div>
+        </div>
+        <button class="save-btn" id="update-note-btn">💾 Save Changes</button>
+      </div>
+    </div>
   </div>
 
   <script src="config.js"></script>
